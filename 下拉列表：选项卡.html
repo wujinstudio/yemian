@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .list{
+        width: 234px;
+        background: #222;
+        margin-top: 60px;
+        margin-left: 50px;
+    }
+    .list ul li{
+        width: 100%;
+        height: 34px;
+        background: #ff6700;
+        position: relative;
+    }
+    .list ul li a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 34px;
+        color:#fff;
+        text-decoration: none;
+    }
+    .list ul li .son{
+        background: aqua;
+        position: absolute;
+        top:0;
+        left:234px;
+        width:500px;
+        height: 500px;
+        display: none;
+    }
+    /*.list ul li:hover .son{*/
+    /*display: inline;*/
+    /*}*/
+</style>
+<body>
+<div class="list">
+    <ul>
+        <li>
+            <a href="">1221</a>
+            <div class="son">111</div>
+        </li>
+        <li>
+            <a href="">1221</a>
+            <div class="son">4122</div>
+        </li>
+        <li>
+            <a href="">1221</a>
+            <div class="son">433</div>
+        </li>
+        <li>
+            <a href="">1221</a>
+            <div class="son">454</div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    //1.获取元素
+    let lis=document.querySelectorAll("li");
+    let son=document.querySelectorAll(".son");
+    // console.log(son);
+    //2.遍历每一个li
+    for(let i=0;i<lis.length;i++){
+        //3.鼠标移入每个li时的操作
+        lis[i].onmouseover=function () {
+            //4.让其余子元素消失
+            for(let j=0;j<son.length;j++){
+                son[j].style.display="none";
+            }
+            //5.当前子元素出现
+            son[i].style.display="block";
+        }
+        lis[i].onmouseout=function () {
+            son[i].style.display="none";
+        };
+    }
+
+</script>

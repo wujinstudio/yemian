@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        list-style: none;
+    }
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    li{
+        width:50px;
+        height:50px;
+        background:#777799;
+        margin-right: 20px;
+    }
+    .active{
+        border-radius: 50%;
+        background:#779999;
+    }
+</style>
+<body>
+<ul>
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    // //1.获取元素
+    // let lid=document.getElementsByTagName("li");
+    // console.log(lid);
+    // for(let i=0;i<lid.length;i++){
+    //     console.log(lid[i]);
+    //     lid[i].onclick=function(){
+    //         lid[i].classList.toggle("active");
+    //         // console.log(lid)
+    //     }
+    // }
+    //1.获取元素
+    let lid=document.getElementsByTagName("li");
+    console.log(lid);
+    //2.遍历获取到的元素列表
+    for(let i=0;i<lid.length;i++){
+        console.log(lid[i]);
+        //3.当点击每一个li时进行的操作
+        lid[i].onclick=function () {
+            //4.去掉所有li上的active类名
+            for(j=0;j<lid.length;j++){
+                lid[j].classList.remove("active");
+            }
+            //5.只给当前点击的li加上active类名
+            lid[i].classList.add("active");
+
+        }
+    }
+</script>

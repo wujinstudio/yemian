@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+    DOM:document object Model  文档对象模型
+    对页面中的元素进行操作（对元素的增、删、改、查以及对样式和内容的修改）；
+    <p>154464</p>
+    <span>1212sssssssssssz12azx</span>
+    <forms></forms>
+    <img src="" alt="是是是">
+    <img src="" alt="方法第三方">
+    <div id="ll">hhhhh</div>
+    <div class="con">4545454545fgdgbc</div>
+    <input type="text" name="121">
+    <input type="text" name="456">
+<div class="con"></div>
+</body>
+</html>
+<script>
+    console.log(window.document);
+    // let res=document.url;//当前文档的地址
+    // let res=document.body;//获取整个body
+    // let res=document.forms;//获取页面中所有的表单元素
+    // let res=document.images;获取页面中的图片
+    // let res=document.title;获取页面标题
+    // console.log(res);
+    //document方法
+    //获取指定id名称的元素，得到该元素本身
+    let res=document.getElementById("ll");
+    //获取指定类名的元素，得到一个元素的集合
+    let res1=document.getElementsByClassName("con");
+    //获取指定标签名称的元素，得到一个元素的集合
+    let res2=document.getElementsByTagName("div");
+    //获取指定name属性的元素，得到一个元素集合
+    let res3=document.getElementsByName("123");
+    //ES6新增方法，只能获取指定选择器中的第一个元素，括号中传的是一个选择器
+    let res4=document.querySelector(".con");
+    //ES6新增方法，能获取指定选择器中的所有元素，括号中传的是一个选择器
+    let res5=document.querySelectorAll(".con")[0];
+    // console.log(res2[0]);
+    // console.log(res5)
+
+
+    //操作Dom元素.
+    //innerHTML获取标签中的内容 开始标签和结束标签之间的内容；
+    // let con=res5.innerHTML;
+    //给元素当中添加内容
+    // res5.innerHTML+="456789";
+    // res5.innerHTML+="<a href=''>链接</a>";
+    //清空该元素中的内容
+    // res5.innerHTML="";
+    console.log(res5);
+    //2.textContent获取元素中的内容
+    // let con=res5.textContent;
+    // console.log(con);
+    // 3.style 修改元素样式
+    // res5.style="width:100px;height:50px;background:pink;text-align:center;" +
+        // "line-height:50px;border-top:1px solid #333";
+    //可以单独修改样式
+    // res5.style.width="200px";
+    //有连字符的样式，需要去掉连字符，把首字母变为大写
+    // res5.style.borderTop="2px dotted red";
+    //获取元素样式
+    // console.log(getComputedStyle(res5,null).width);
+    // 4.className 获取类名，得到的是一个string类型的数据
+    // console.log(res5.className);
+    // 5.classList 获取类名，得到一个集合
+    // console.log(res5.classList);
+    //给类名列表中添加某个类名
+    // res5.classList.add("box1");
+    //从类名列表中移除某个类名
+    // res5.classList.remove("box1");
+    //在类名列表中对某个类名进行切换，如果有，则去掉，如果没有，则添加
+    // res5.classList.toggle("box2");
+
+
+    //事件
+    // 1.鼠标事件
+    //单击
+    // res5.onclick=function () {
+    //     alert(1);
+    // }
+    //双击
+    // res.ondblclick=function () {
+    //     alert(2)
+    // }
+    //鼠标移入
+    // res5.onmouseenter=function () {
+    //     alert(3)
+    // };
+    // res5.onmouseover=function () {
+    //     alert(4)
+    // }
+    //鼠标移出
+    // res5.onmouseleave=function () {
+    //     alert(5);
+    // };
+    // res.onmouseout=function () {
+    //     alert(6);
+    // }
+    // 鼠标移动
+    // res5.onmousemove=function () {
+    //     console.log("正在移动");
+    // };
+    // 鼠标按下
+    // res5.onmousedown=function () {
+    //     console.log("按下");
+    // };
+    // 鼠标抬起
+    // res5.onmouseup=function () {
+    //     console.log("抬起");
+    // };
+    //鼠标右击
+    res5.oncontextmenu=function () {
+        console.log("鼠标正在右键")
+    }
+    // 键盘事件
+    //键盘按下
+    onkeydown=function (e) {
+        console.log(e.key);
+    }
+    //键盘按下或者按住
+    onkeypress=function (e) {
+        console.log(e)
+    }
+    //键盘抬起
+    onkeyup=function (e) {
+        console.log(e);
+    }
+    //表单事件
+    // 提交
+    // form.onsubmit=function () {};
+    // //重置
+    // form.onreset=function () {};
+    // //获得焦点
+    // form.onfocus=function() {};
+    // //失去焦点
+    // form.onblur=function () {};
+    // //内容改变
+    // form.onchange=function () {};
+
+
+    //窗口事件
+    // 加载
+    // window.onload=function () {
+        // alert(1);
+    // };
+    // 滚动
+    // window.onscroll=function () {
+        // alert(5)
+    // };
+    // 大小改变
+    // window.onresize=function () {
+    //     alert(2);
+    // };
+</script>

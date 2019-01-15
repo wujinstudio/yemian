@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="move.js"></script>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .list{
+        width: 234px;
+        background: #222;
+        margin-top: 60px;
+        margin-left: 50px;
+    }
+    .list ul li{
+        width: 100%;
+        height: 34px;
+        background: #ff6700;
+        position: relative;
+    }
+    .list ul li a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 34px;
+        color:#fff;
+        text-decoration: none;
+    }
+    .list ul li .son{
+        background: aqua;
+        position: absolute;
+        top:0;
+        left:234px;
+        width:500px;
+        height: 500px;
+        display: none;
+    }
+    /*.list ul li:hover .son{*/
+        /*display: inline;*/
+    /*}*/
+    .box{
+        width:500px;
+        height: 500px;
+        background:red;
+        margin:20px auto;
+        position: relative;
+    }
+    .box img{
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .box .cover{
+        width:500px;
+        height:500px;
+        background: rgba(0,0,0,0.1);
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    .box1{
+        width:200px;
+        height:300px;
+        background:pink;
+        margin:20px auto;
+    }
+</style>
+<body>
+    <div class="list">
+        <ul>
+            <li>
+                <a href="">1221</a>
+                <div class="son">111</div>
+            </li>
+            <li>
+                <a href="">1221</a>
+                <div class="son">4122</div>
+            </li>
+            <li>
+                <a href="">1221</a>
+                <div class="son">433</div>
+            </li>
+            <li>
+                <a href="">1221</a>
+                <div class="son">454</div>
+            </li>
+        </ul>
+    </div>
+    <div class="box">
+        <img src=".idea/pexels-photo-1056251.jpg" alt="">
+        <div class="cover"></div>
+    </div>
+    <div class="box1"></div>
+</body>
+</html>
+<script>
+    //1.获取元素
+    let lis1=document.querySelectorAll("li");
+    let son2=document.querySelectorAll(".son");
+    // console.log(son);
+    //2.遍历每一个li
+    // for(let i=0;i<lis.length;i++){
+    //     //3.鼠标移入每个li时的操作
+    //     lis[i].onmouseover=function () {
+    //         //4.让其余子元素消失
+    //         for(let j=0;j<son.length;j++){
+    //             son[j].style.display="none";
+    //         }
+    //         //5.当前子元素出现
+    //         son[i].style.display="block";
+    //     }
+    //     lis[i].onmouseout=function () {
+    //         son[i].style.display="none";
+    //     };
+    // }
+    chose(lis1,son2);
+
+</script>
+<script>
+    //1.获取要操作的元素，注意集合问题，可以用[]下标来获取元素
+    let box=document.querySelectorAll(".box")[0];
+    let covr=document.querySelectorAll(".cover")[0];
+    // // console.log(covr);
+    // //2.鼠标移入
+    // box.onmouseover=function () {
+    //     //遮罩出现
+    //     covr.style.display="block";
+    // };
+    // // 3.鼠标移出
+    // box.onmouseout=function () {
+    //     //遮罩消失
+    //     covr.style.display="none";
+    // };
+    Zhezhao(box,covr);
+</script>
+<script>
+    //1.获取元素
+    let  box1=document.querySelectorAll(".box1")[0];
+    // console.log(box1);
+    //2.用时间函数
+    let t=setInterval(move,50);
+    // 3.定义一个增长速度
+    let speed=10;
+    // 定义function函数
+    function move() {
+        let width1=parseInt(getComputedStyle(box1,null).width);
+        let newwidths=width1+speed;
+        if(newwidths>800){
+            speed*=-1;
+        }else if(newwidths<200){
+            speed*=-1;
+        }
+        box1.style.width=newwidths+"px";
+    }
+
+    // let box1=document.querySelectorAll(".box1")[0];
+    // console.log(box1);
+    // let l=window.setInterval(fn,500);
+    //     function fn() {box1.style.width="800px";
+    //         let o=window.setTimeout(fn1,1000);
+    //         function fn1() {
+    //             box1.style.width="200px";
+    //         }
+    //     }
+    // if(box1.style.width="200px"){
+    //     let l=window.setInterval(fn,1000);
+    //     function fn() {
+    //         box1.style.width="800px"
+    //     }
+    // }else{
+    //     box1.style.width="200px"
+    // }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="animate.js"></script>
+    <script src="move.js"></script>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .banner{
+        height: 460px;
+        width:100%;
+        background: #777799;
+    }
+    .container{
+        width: 1226px;
+        height:100%;
+        margin: 0 auto;
+        background: #779999;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .imgs{
+        height: 460px;
+        width: 100%;
+    }
+    .imgs img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:0;
+        left: 1226px;
+    }
+    ul{
+        width:120px;
+        height:10px;
+        position:absolute;
+        right: 0;
+        left:0;
+        margin: 0 auto;
+        bottom: 10px;
+        z-index: 999;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    ul li{
+        height:10px;
+        width:10px;
+        background: grey;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .leftbtn{
+        width:80px;
+        height:130px;
+        background: darkturquoise;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin:auto 0;
+        opacity: 0.3;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        color: white;
+    }
+    .rightBtn{
+        width:80px;
+        height:130px;
+        background: darkturquoise;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin:auto 0;
+        opacity: 0.3;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        color: white;
+    }
+    .active{
+        background: white;
+    }
+</style>
+<body>
+    <div class="banner">
+        <div class="container">
+            <div class="imgs">
+                <img src="1.jpg" alt="">
+                <img src="2.jpg" alt="">
+                <img src="3.jpg" alt="">
+                <img src="4.jpg" alt="">
+                <img src="5.jpg" alt="">
+            </div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="leftbtn">&lt;</div>
+            <div class="rightBtn">&gt;</div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // 1.获取元素
+    let imgs=document.querySelectorAll("img");
+    let dots=document.querySelectorAll("li");
+    let banner=document.querySelectorAll(".banner")[0];
+    let left=document.querySelectorAll(".leftbtn")[0];
+    let right=document.querySelectorAll(".rightBtn")[0];
+    let widths=parseInt(getComputedStyle(imgs[0],null).width);
+    // console.log(widths);
+    // console.log(imgs,dots,banner,left,right);
+    // 2.初始值
+    // imgs[0].style.left=0;
+    // dots[0].classList.add("active");
+    // let now=0;
+    // let next=0;
+    // // 开关：控制左右箭头，默认是开着的 flag=true
+    // //2.开关：控制快速点击时图片会快速轮播现象
+    // let flag=true;
+    // // 3.添加时间函数
+    // let t=setInterval(move,1500);
+    // function move() {
+    //     next++;
+    //     if(next==imgs.length){
+    //         next=0;
+    //     }
+    //     //确保下一张图永远在最右侧
+    //     imgs[next].style.left=widths+"px";
+    //     // imgs[now].style.left=wi
+    //     animate(imgs[now],{left:-widths});
+    //     animate(imgs[next],{left:0},function () {
+    //         flag=true;
+    //     });
+    //     dots[now].classList.remove("active");
+    //     dots[next].classList.add("active");
+    //     now=next;
+    // }
+    // // 左右箭头
+    // function moveL() {
+    //     next--;
+    //     if(next<0){
+    //         next=imgs.length-1;
+    //     }
+    //     imgs[next].style.left=-widths+"px";
+    //     animate(imgs[now],{left:widths});
+    //     animate(imgs[next],{left:0},function () {
+    //         flag=true;
+    //     });
+    //     dots[now].classList.remove("active");
+    //     dots[next].classList.add("active");
+    //     now=next;
+    // }
+    // left.onclick=function () {
+    //     //开关关闭时，不要点击
+    //     // 判断开关是否开启
+    //     //flag=flase !flag=ture;****
+    //     // 开关开启，则！flag=false，不执行return，执行flag=false和move，move执行完flag=true
+    //     //开关关闭，不要点击（判断表达式的值）
+    //     //！flag==flase;
+    //     if(!flag){
+    //         return;
+    //     }
+    //     flag=false;
+    //     moveL();
+    // }
+    // right.onclick=function () {
+    //     if(!flag){
+    //         return;
+    //     }
+    //     flag=false;
+    //     move();
+    // }
+    // banner.onmouseover=function () {
+    //     clearInterval(t);
+    // }
+    // banner.onmouseout=function () {
+    //     t=setInterval(move,1500);
+    // }
+    // //鼠标移入轮播点
+    // for(let i=0;i<dots.length;i++){
+    //     dots[i].onmouseover=function () {
+    //         for(let j=0;j<dots.length;j++){
+    //             dots[j].classList.remove("active");
+    //             imgs[j].style.left=widths+"px";
+    //         }
+    //         dots[i].classList.add("active");
+    //         imgs[i].style.left=0;
+    //         now=i;
+    //         next=i;
+    //     }
+    //     }
+    // //窗口失去焦点时，停止时间间隔函数
+    // window.onblur=function () {
+    //     clearInterval(t);
+    // }
+    // //窗口获得焦点时，继续时间间隔函数
+    // window.onfocus=function () {
+    //     t=setInterval(move,1500);
+    // }
+    banner_lr(imgs,dots,banner,left,right,widths,"active");
+
+
+</script>
+<!--<script>-->
+    <!--let imgs=document.querySelectorAll("img");-->
+    <!--let dots=document.querySelectorAll("li");-->
+    <!--let banner=document.querySelectorAll(".banner")[0];-->
+    <!--let left=document.querySelectorAll(".leftbtn")[0];-->
+    <!--let right=document.querySelectorAll(".rightBtn")[0];-->
+    <!--let widths=parseInt(getComputedStyle(imgs[0],null).width);-->
+    <!--imgs[0].style.left=0;-->
+    <!--dots[0].classList.add("active");-->
+    <!--let now=0;-->
+    <!--let next=0;-->
+    <!--let t=setInterval(move,1500)-->
+    <!--function move() {-->
+        <!--next++;-->
+        <!--if(next==imgs.length){-->
+            <!--next=0;-->
+        <!--}-->
+        <!--imgs[next].style.left=widths+"px";-->
+        <!--animate(imgs[now],{left:-widths});-->
+        <!--animate(imgs[next],{left:0});-->
+        <!--imgs[0].style.left=0;-->
+        <!--dots[0].classList.add("active");-->
+        <!---->
+    <!--}-->
+<!--</script>-->
